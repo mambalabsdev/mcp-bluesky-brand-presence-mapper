@@ -19,7 +19,7 @@ const ACTOR_INPUTS = ["company_domain","company_name","handle","includeFollowerC
 const TOOL_INPUTS = ["company_domain","company_name","handle","includeFollowerCounts","skipCache","useActorSearch"];
 const TOOL_REQUIRED = [];
 const SAMPLE_ARGS = {"company_domain":"theverge.com"};
-const RUN_QUERY = "?memory=256";
+const RUN_QUERY = "?timeout=1800&memory=256";
 
 // Speak MCP over stdio to the built server. extraEnv and preload let a test
 // swap in the fake Apify API from helpers/mock-fetch.mjs.

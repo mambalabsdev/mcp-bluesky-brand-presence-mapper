@@ -26,6 +26,8 @@ The counts are exact rather than rounded. When the resolved handle is the compan
 
 All of the lookup runs on Apify. This package is a thin client that calls the actor and hands back the result unchanged.
 
+The tool starts the actor run and polls it to a finished status, so a long run is not cut off at 300 seconds. If the run is still going after 30 minutes, the call stops waiting and returns the run ID with a link to it in the Apify Console, where the results land when it finishes. A run that does not succeed comes back as an error with its run ID and status.
+
 ## Quick start
 
 You need Node.js 18 or newer and an Apify account with an API token.
@@ -92,6 +94,7 @@ The tool returns the actor's flat JSON row for the company, with 18 snake_case f
   "bluesky_posts": 14584,
   "bluesky_followers_exact": true,
   "bluesky_display_name": "The Verge",
+  "bluesky_bio": "The Verge covers the intersection of technology, science, art, and culture.",
   "bluesky_created_at": "2023-05-23T19:11:25.009Z",
   "bluesky_discovery": "domain_handle",
   "bluesky_status": "ok",

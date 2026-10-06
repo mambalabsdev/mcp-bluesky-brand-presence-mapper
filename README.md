@@ -26,7 +26,7 @@ The counts are exact rather than rounded. When the resolved handle is the compan
 
 All of the lookup runs on Apify. This package is a thin client that calls the actor and hands back the result unchanged.
 
-The tool starts the actor run and polls it to a finished status, so a long run is not cut off at 300 seconds. If the run is still going after 30 minutes, the call stops waiting and returns the run ID with a link to it in the Apify Console, where the results land when it finishes. A run that does not succeed comes back as an error with its run ID and status.
+The tool starts the actor run and polls it to a finished status, so a long run is not cut off at 300 seconds. The run is allowed 1,800 seconds. If it is still going two minutes after that, the call stops waiting and returns the run ID with a link to it in the Apify Console, where the results land when it finishes. A run that does not succeed comes back as an error with its run ID and status.
 
 ## Quick start
 

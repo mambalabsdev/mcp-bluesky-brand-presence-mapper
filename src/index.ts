@@ -217,12 +217,13 @@ server.registerTool(
       "Resolve a company domain, or a Bluesky handle, to that company's official Bluesky account through the public AT Protocol API. Returns the profile URL, handle, DID, exact follower, following and post counts, display name, bio and account creation date, as one flat Clay ready row. Counts are EXACT here, not rounded, unlike every other platform in this family. When the resolved handle IS the company domain, Bluesky granted it after a DNS check the company had to pass, and the row flags that as the strongest identity evidence available. A company with no Bluesky account returns not_found, which is a real and common answer. Read only; requires an APIFY_TOKEN and consumes Apify credits per call.",
     annotations: {
       title: "Map Bluesky Brand Presence",
-      readOnlyHint: true,
+      readOnlyHint: false,
       destructiveHint: false,
       idempotentHint: true,
       openWorldHint: true,
     },
     inputSchema: {
+      max_charge_usd: z.number().min(0).optional().describe("Optional. The run stops before starting an item that could take its charges past this amount, so no row is cut in half. Leave empty to rely only on the maximum cost per run you set in Apify. The run also stops cleanly when that Apify maximum is reached."),
       company_domain: z.string()
         .optional()
         .describe("Bare company domain, for example shopify.com. Supply this or a handle. With a domain the actor runs full discovery; with a handle it skips straight to the fetch."),
@@ -243,11 +244,12 @@ server.registerTool(
         .describe("When \"true\" (default) and the domain is not itself a verified handle, Bluesky's own account search is used to find the company. Set \"false\" to rely only on the company homepage and the domain as handle, which avoids any chance of matching a similarly named account. Sent as a string for Clay compatibility."),
     },
   },
-  async ({ company_domain, company_name, handle, includeFollowerCounts, skipCache, useActorSearch }) => {
+  async ({ company_domain, company_name, handle, includeFollowerCounts, skipCache, useActorSearch, max_charge_usd }) => {
     return runActor(
       "eLpxzP4IuXznlFVND",
       "Bluesky Brand Presence Mapper",
       compact({
+        max_charge_usd,
         company_domain,
         company_name,
         handle,

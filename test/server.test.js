@@ -14,9 +14,9 @@ const TOOL_NAME = "map_bluesky_brand_presence";
 const ACTOR_ID = "eLpxzP4IuXznlFVND";
 // Every input the live actor exposes to a buyer must be exposed by the tool.
 // Excluded by rule: source_tag (internal or test only fields).
-const ACTOR_INPUTS = ["company_domain","company_name","handle","includeFollowerCounts","skipCache","useActorSearch"];
+const ACTOR_INPUTS = ["max_charge_usd","company_domain","company_name","handle","includeFollowerCounts","skipCache","useActorSearch"];
 // The tool's full input list, so a dropped or renamed parameter fails here.
-const TOOL_INPUTS = ["company_domain","company_name","handle","includeFollowerCounts","skipCache","useActorSearch"];
+const TOOL_INPUTS = ["max_charge_usd","company_domain","company_name","handle","includeFollowerCounts","skipCache","useActorSearch"];
 const TOOL_REQUIRED = [];
 const SAMPLE_ARGS = {"company_domain":"theverge.com"};
 const RUN_QUERY = "?timeout=1800&memory=256";

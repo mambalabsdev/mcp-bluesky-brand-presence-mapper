@@ -1,7 +1,7 @@
 {
   "name": "mcp-bluesky-brand-presence-mapper",
   "displayName": "Bluesky Brand Presence Mapper",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "MCP server for the Mamba Labs Bluesky Brand Presence Mapper actor on Apify. Resolve a company domain to its Bluesky account with exact follower, following and post counts.",
   "author": {
     "name": "Mamba Labs",

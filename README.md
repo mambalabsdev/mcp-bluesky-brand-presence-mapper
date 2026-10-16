@@ -70,6 +70,7 @@ Get your token at https://console.apify.com/account/integrations, paste it in, a
 - `includeFollowerCounts` (optional): when true (the default) the profile is fetched and the counts are extracted. Set false to resolve the profile URL only, which is cheaper.
 - `skipCache` (optional): when false (the default) a successful lookup is cached for seven days and reused. Set true to force a fresh fetch.
 - `useActorSearch` (optional): when true (the default) and the domain is not itself a verified handle, Bluesky's own account search is used. Set false to rely only on the company homepage and the domain as handle, which avoids any chance of matching a similarly named account.
+- `max_charge_usd` (optional): a cost cap in USD for this run. The actor stops before an item that could take its charges past this amount. Omit it to rely on the maximum cost per run set in Apify.
 
 Supply either `company_domain` or `handle`.
 
@@ -111,6 +112,17 @@ The tool returns the actor's flat JSON row for the company, with 18 snake_case f
 - Account creation date, so a new presence is distinguishable from an established one
 - The discovery route is reported on every row in `bluesky_discovery`
 - 18 flat snake_case fields, one row per company
+
+## Pricing
+
+Price per event on the Apify FREE plan, from the live pricing record; paid Apify plans pay less per event.
+
+| Event | Price (USD) |
+| --- | --- |
+| Actor Start (`apify-actor-start`) | 0.00005 |
+| Company checked (`company-checked`) | 0.0035 |
+| Profile resolved (`profile-resolved`) | 0.003 |
+| Follower count extracted (`follower-count-extracted`) | 0.0025 |
 
 ## Full actor documentation
 
